@@ -8,13 +8,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite", "satellite\Sate
 		{A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9} = {A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proto", "Proto\Proto.csproj", "{A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Proto\Util.csproj", "{A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroundControlStation", "GroundControlStation\GroundControlStation.csproj", "{D96A55E4-490C-4E54-BFEF-F0B944AF50E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D96A55E4-490C-4E54-BFEF-F0B944AF50E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D96A55E4-490C-4E54-BFEF-F0B944AF50E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D96A55E4-490C-4E54-BFEF-F0B944AF50E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D96A55E4-490C-4E54-BFEF-F0B944AF50E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

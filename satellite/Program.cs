@@ -1,23 +1,36 @@
 ﻿using System;
 
-using StarrySkies.Protobuf;
-
-namespace MyNamespace
+namespace Satellite
 {
-    class Program
+    internal class Program
     {
+        private static volatile bool _keepRunning = true;
+
         static void Main(string[] args)
         {
-            var data = new Telemetry
+            // TODO - make upper bounds configurable via args
+            Satellite satellite = new Satellite(100, 100);
+
+
+            Console.CancelKeyPress += (sender, e) =>
             {
-                Callsign = "AGENT-007",
-                XLocation = 0,
-                YLocation = 1,
-                XVelocity = 2,
-                YVelocity = 3
+                Console.WriteLine("Satellite received Kill signal -- Initiating graceful shutdown...");
+                e.Cancel = true; // Prevent immediate termination
+                _keepRunning = false;
             };
 
-            Console.WriteLine($"Telemetry: {data.Callsign}, {data.XLocation}");
+
+            Console.WriteLine("Satellite is deploying. Press Ctrl+C or kill docker container to initiate shutdown.");
+
+            while (_keepRunning)
+            {
+                satellite.Move();
+
+                // 2 Hz
+                Thread.Sleep(500);
+            }
+
+            Console.WriteLine("Satellite finished terminating.");
         }
     }
 }

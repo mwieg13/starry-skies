@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 using StarrySkies.Protobuf;
+using Google.Protobuf;
 
-namespace satellite
+using Confluent.Kafka;
+
+namespace Satellite
 {
     internal class Satellite
     {
@@ -18,13 +21,27 @@ namespace satellite
         public int upperBoundX { get; set; }
         public int upperBoundY { get; set; }
 
+
+        private IProducer<Null, byte[]> producer;
+
+
         public Satellite(int _upperBoundX, int _upperBoundY)
         {
+            Random rand = new Random();
+
+            // Setup Kafka connection
+            ProducerConfig config = new ProducerConfig
+            {
+                BootstrapServers = Util.Constants.KAFKA_CONNECTION
+            };
+
+            producer = new ProducerBuilder<Null, byte[]>(config).Build();
+
+            // TODO - setup Kafka consumer (once I start reading in msgs from other satellites)
+
+            // Setup everything else
             upperBoundX = _upperBoundX;
             upperBoundY = _upperBoundY;
-
-            // constructor
-            Random rand = new Random();
 
             xLocation = rand.Next(0, upperBoundX);
             yLocation = rand.Next(0, upperBoundY);
@@ -80,7 +97,10 @@ namespace satellite
                 YVelocity = yVelocity
             };
 
-            // TODO - define the medium of transmission
+            producer.ProduceAsync(
+                Util.Constants.TELEMETRY_TOPIC,
+                new Message<Null, byte[]> { Value = msg.ToByteArray() }
+            ).Wait();
         }
     }
 }
