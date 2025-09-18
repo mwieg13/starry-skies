@@ -1,0 +1,18 @@
+syntax = "proto3";
+package StarrySkies.Protobuf;
+
+/**
+ * Telemetry message for satellites.
+ *
+ * Provides enough data for the GCS to track locations and also provides data that the satellites themselves 
+ * can use to adjust their future positions.
+ */
+message Telemetry {
+    string callsign = 1;
+    int32 xLocation = 2;
+    int32 yLocation = 3;
+
+    // including these for future use
+    int32 xVelocity = 4;
+    int32 yVelocity = 5;
+}

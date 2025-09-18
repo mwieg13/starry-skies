@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using StarrySkies.Protobuf;
+
 namespace satellite
 {
     internal class Satellite
@@ -15,16 +17,6 @@ namespace satellite
         public string callsign { get; set; } = "";
         public int upperBoundX { get; set; }
         public int upperBoundY { get; set; }
-
-
-        // data members:
-        // x location
-        // y location
-        // x velocity
-        // y velocity
-        // callsign
-        // upper bound x
-        // upper bound y
 
         public Satellite(int _upperBoundX, int _upperBoundY)
         {
@@ -45,7 +37,7 @@ namespace satellite
 
         public void Move()
         {
-            // TODO - implement collision avoidance
+            // TODO - implement collision avoidance (will require reading in other proto msgs)
 
             int nextX = xLocation + xVelocity;
             int nextY = yLocation + yVelocity;
@@ -63,7 +55,7 @@ namespace satellite
             xLocation += xVelocity;
             yLocation += yVelocity;
 
-            // TODO - send telemetry data
+            SendTelemetry();
         }
 
         private void GenerateCallsign()
@@ -77,6 +69,18 @@ namespace satellite
             callsign += rand.Next(0, 9).ToString();
         }
 
+        private void SendTelemetry()
+        {
+            var msg = new Telemetry
+            {
+                Callsign = callsign,
+                XLocation = xLocation,
+                YLocation = yLocation,
+                XVelocity = xVelocity,
+                YVelocity = yVelocity
+            };
 
+            // TODO - define the medium of transmission
+        }
     }
 }
