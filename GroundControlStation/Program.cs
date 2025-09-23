@@ -76,7 +76,7 @@ namespace GroundControlStation
                     Console.WriteLine($"Attempt {attempt}: Checking connection to Kafka broker at '{Util.Constants.KAFKA_CONNECTION}'...");
 
                     // Attempt to fetch metadata from Kafka
-                    var meta = adminClient.GetMetadata(TimeSpan.FromSeconds(2));
+                    var meta = adminClient.GetMetadata(TimeSpan.FromSeconds(1));
                     Console.WriteLine($"Connected to Kafka cluster '{meta.OriginatingBrokerId}'");
                     connected = true;
                 }

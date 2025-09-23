@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite", "satellite\Satellite.csproj", "{EA7AD01C-7749-413F-B439-4862ECB834DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satellite", "Satellite\Satellite.csproj", "{EA7AD01C-7749-413F-B439-4862ECB834DB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9} = {A99FD2AC-A9D4-4D58-B15C-00A43C24E3A9}
 	EndProjectSection

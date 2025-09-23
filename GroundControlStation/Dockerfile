@@ -1,14 +1,16 @@
+#########################################################################################
+##### Be sure to run this dockerfile from the starry_skies directory (one level up) #####
+#########################################################################################
+
 # run command:
-# docker build -t gcs -f GroundControlStation/Dockerfile .
+#   docker build -t gcs -f GroundControlStation/Dockerfile .
+#
+# Note: it is intended that this Dockerfile be called from the docker-compose-gcs file at root of project
 
 
 # Use official .NET SDK image for build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-
-#########################################################################################
-##### Be sure to run this dockerfile from the starry_skies directory (one level up) #####
-#########################################################################################
 
 # Copy everything
 COPY GroundControlStation/GroundControlStation.csproj GroundControlStation/
@@ -23,9 +25,6 @@ COPY Util/ Util/
 
 # publish
 RUN dotnet publish GroundControlStation/GroundControlStation.csproj -c Release -o /app
-
-# Build and publish a release
-#RUN dotnet publish -o out
 
 # expose port for Kafka
 EXPOSE 9092
