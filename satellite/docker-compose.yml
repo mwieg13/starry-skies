@@ -1,0 +1,9 @@
+services:
+  producer:
+    build: .
+    networks:
+      - starry-skies
+
+networks:
+  starry-skies:
+    external: true
