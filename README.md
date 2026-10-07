@@ -37,4 +37,5 @@ A network of docker containers acting as individual satellites, with a focus on 
     - publish svID, xPos, yPos, xVel, yVel
 
 2. Emergency Broadcast (EMERGENCY_BROADCAST) (For collision detection)
-		- publish svID, other_svID, requested_xVel, requested_yVel
+    - publish svID, other_svID, requested_xVel, requested_yVel
+
